@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workouts & Classes | FIT-ZONE</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#000;color:#fff;overflow-x:hidden}
+    
+    /* HEADER & NAV */
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:rgba(0,0,0,0.85);position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px)}
+    .logo{font-size:1.8rem;font-weight:700;color:#00ffb3;letter-spacing:1px;text-decoration:none}
+    nav ul{list-style:none;display:flex;gap:30px;align-items:center}
+    nav ul li a{text-decoration:none;color:#fff;font-weight:500;font-size:1rem;transition:.3s;padding:8px 0}
+    nav ul li a:hover, nav ul li a.active{color:#00ffb3}
+    .cta-btn{background:#00ffb3;color:#000!important;padding:10px 20px!important;border-radius:30px;font-weight:600}
+    .hamburger{display:none;cursor:pointer;font-size:1.8rem;color:#00ffb3}
+
+    @media (max-width:868px){
+      .hamburger{display:block}
+      nav ul{position:fixed;top:70px;left:-100%;width:100%;height:100vh;background:rgba(0,0,0,0.98);flex-direction:column;justify-content:start;align-items:center;padding-top:60px;transition:left .4s ease;gap:40px;font-size:1.4rem}
+      nav ul.active{left:0}
+      nav ul li a{font-size:1.3rem}
+      header{padding:15px 25px}
+      .logo{font-size:1.6rem}
+    }
+
+    /* PAGE HEADER */
+    .page-header{
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14dd86d3d7e4?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 5% 80px;
+      text-align: center;
+      position: relative;
+    }
+    .page-header::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4)}
+    .page-header h1{font-size:3.2rem;color:#00ffb3;margin-bottom:15px;position:relative;z-index:1}
+    .page-header p{font-size:1.2rem;color:#ddd;position:relative;z-index:1}
+
+    /* WORKOUTS LIST */
+    .workouts-list{
+      padding: 80px 5% 60px;
+      text-align: center;
+      background: #111;
+    }
+    .workouts-list h2{
+      font-size: 2.5rem;
+      color: #00ffb3;
+      margin-bottom: 50px;
+    }
+    .card-container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .workout-card{
+      background: #1a1a1a;
+      border-radius: 15px;
+      width: 300px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,255,179,0.2);
+      transition: 0.3s;
+    }
+    .workout-card:hover{
+      transform: translateY(-10px);
+    }
+    .workout-card img{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .workout-card h3{
+      margin: 20px 0 10px;
+      color: #00ffb3;
+      padding: 0 20px;
+      text-align: left;
+    }
+    .workout-card p{
+      padding: 0 20px;
+      color: #ccc;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .card-btn{
+      background: #00ffb3;
+      color: #000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 0 20px 20px;
+      transition: 0.3s;
+      width: calc(100% - 40px);
+      text-align: center;
+    }
+    .card-btn:hover{
+      background: #00d49a;
+    }
+
+    /* FOOTER */
+    .footer{
+      background:#000;
+      text-align:center;
+      padding:40px 20px;
+      color:#888;
+    }
+    .footer .social-links a{
+      color:#00ffb3;
+      margin:0 15px;
+      text-decoration:none;
+      font-size:1.1rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width:768px){
+      .page-header{padding:100px 5% 60px}
+      .page-header h1{font-size:2.5rem}
+      .page-header p{font-size:1.1rem}
+      .workouts-list h2{font-size:2rem}
+      .workout-card{width:100%;max-width:320px}
+    }
+    @media (max-width:480px){
+      .page-header{padding:80px 5% 40px}
+      .page-header h1{font-size:2rem}
+      .workouts-list{padding:60px 5% 40px}
+      .workouts-list h2{font-size:1.7rem}
+      .workout-card img{height:180px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">FIT-ZONE</a>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="more.html" class="active">Workouts</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="login.html" class="cta-btn">Login</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1>On-Demand Workouts</h1>
+    <p>Choose your session: live class, body-weight, or guided meditation.</p>
+  </section>
+
+  <!-- WORKOUTS LIST -->
+  <section class="workouts-list">
+    <h2>Find Your Perfect Session</h2>
+    <div class="card-container">
+      <div class="workout-card">
+        <img src="./Images/5-17.jpg" alt="Power Yoga">
+        <h3>Power Yoga (Beginner)</h3>
+        <p>A one-hour session that will boost your strength and focus.</p>
+        <button class="card-btn">Start Session</button>
+      </div>
+      <div class="workout-card">
+        <img src="./Images/OIP (1).webp" alt="Cardio Blast">
+        <h3>Cardio Blast (Advanced)</h3>
+        <p>A 45-minute high-intensity session for fat burning.</p>
+        <button class="card-btn">Start Session</button>
+      </div>
+      <div class="workout-card">
+        <img src="./Images/64572607_s.webp" alt="Abs & Core">
+        <h3>15 Min Abs Challenge</h3>
+        <p>Improve your core strength. Equipment free.</p>
+        <button class="card-btn">Start Session</button>
+      </div>
+      <div class="workout-card">
+        <img src="./Images/GettyImages-640630221-5b81520446e0fb00258fa1ff.jpg" alt="Meditation">
+        <h3>Guided Meditation</h3>
+        <p>After your workout, this is for peace at the start of your day.</p>
+        <button class="card-btn">Start Session</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2024 FIT-ZONE Virtual Gym. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#">Instagram</a> | <a href="#">Facebook</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Hamburger -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("active");
+    }
+    document.querySelectorAll("#navMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("navMenu").classList.remove("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

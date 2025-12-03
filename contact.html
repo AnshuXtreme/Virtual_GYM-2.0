@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | FIT-ZONE</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#000;color:#fff;overflow-x:hidden}
+
+    /* HEADER & NAV - SAME AS INDEX */
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:rgba(0,0,0,0.85);position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px)}
+    .logo{font-size:1.8rem;font-weight:700;color:#00ffb3;letter-spacing:1px;text-decoration:none}
+    nav ul{list-style:none;display:flex;gap:30px;align-items:center}
+    nav ul li a{text-decoration:none;color:#fff;font-weight:500;font-size:1rem;transition:.3s;padding:8px 0}
+    nav ul li a:hover, nav ul li a.active{color:#00ffb3}
+    .cta-btn{background:#00ffb3;color:#000!important;padding:10px 20px!important;border-radius:30px;font-weight:600}
+    .hamburger{display:none;cursor:pointer;font-size:1.8rem;color:#00ffb3}
+
+    @media (max-width:868px){
+      .hamburger{display:block}
+      nav ul{position:fixed;top:70px;left:-100%;width:100%;height:100vh;background:rgba(0,0,0,0.98);flex-direction:column;justify-content:start;align-items:center;padding-top:60px;transition:left .4s ease;gap:40px;font-size:1.4rem}
+      nav ul.active{left:0}
+      nav ul li a{font-size:1.3rem}
+      header{padding:15px 25px}
+      .logo{font-size:1.6rem}
+    }
+
+    /* CONTACT PAGE CONTENT */
+    .contact-container{
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 140px 5% 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-info, .contact-form-area{
+      flex-basis: 45%;
+    }
+    .contact-form-area h2, .contact-info h2{
+      font-size: 2.5rem;
+      color: #00ffb3;
+      margin-bottom: 20px;
+    }
+    .contact-info p{
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+    .contact-info strong{
+      color: #00ffb3;
+    }
+    .input-group{
+      margin-bottom: 20px;
+    }
+    .input-group label{
+      display: block;
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+    .input-group input, .input-group textarea{
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #00ffb3;
+      border-radius: 10px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    .input-group input:focus, .input-group textarea:focus{
+      outline: none;
+      box-shadow: 0 0 10px rgba(0,255,179,0.3);
+    }
+    .main-cta{
+      background: #00ffb3;
+      color: #000;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+    .main-cta:hover{
+      background: #00d49a;
+      transform: scale(1.05);
+    }
+    .map-container{
+      margin-top: 30px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,255,179,0.1);
+    }
+    .map-container iframe{
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+
+    /* FOOTER */
+    .footer{
+      background:#000;
+      text-align:center;
+      padding:40px 20px;
+      color:#888;
+    }
+    .footer .social-links a{
+      color:#00ffb3;
+      margin:0 15px;
+      text-decoration:none;
+      font-size:1.1rem;
+    }
+
+    /* Responsive */
+    @media (max-width:768px){
+      .contact-container{flex-direction:column;gap:30px;padding:120px 5% 60px}
+      .contact-info, .contact-form-area{flex-basis:100%}
+      .contact-form-area h2, .contact-info h2{font-size:1.8rem}
+      .contact-info p{font-size:1rem}
+      .map-container iframe{height:200px}
+    }
+    @media (max-width:480px){
+      .contact-container{padding:100px 4% 40px;gap:20px}
+      .contact-form-area h2, .contact-info h2{font-size:1.5rem}
+      .input-group input, .input-group textarea{padding:10px;font-size:0.95rem}
+      .main-cta{padding:12px;font-size:0.95rem}
+      .map-container iframe{height:180px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">FIT-ZONE</a>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="more.html">Workouts</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="login.html" class="cta-btn">Login</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- CONTACT CONTENT -->
+  <section class="contact-container">
+    <div class="contact-form-area">
+      <h2>Get In Touch</h2>
+      <form>
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="input-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" required>
+        </div>
+        <div class="input-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="main-cta">Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <h2>Our Details</h2>
+      <p><strong>Email:</strong> rajput69@shooliniuniversity.com</p>
+      <p><strong>Phone:</strong> +91 9876543210</p>
+      <p><strong>Head Office:</strong></p>
+      <p>Virtual Gym Headquarters,<br>
+         Milkha Singh Complex, Bajhol <br>
+         Solan, HP, India - 173212</p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.187383674684!2d77.1082697!3d30.8872688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39058b7352352937%3A0x1d3f2372e9a7246b!2sShoolini%20University%20of%20Biotechnology%20and%20Management%20Sciences!5e0!3m2!1sen!en!4v1635398400000!5m2!1sen!en" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2024 FIT-ZONE Virtual Gym. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#">Instagram</a> | <a href="#">Facebook</a>
+    </div>
+  </footer>
+
+  <!-- Hamburger Menu Script -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("active");
+    }
+    document.querySelectorAll("#navMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("navMenu").classList.remove("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

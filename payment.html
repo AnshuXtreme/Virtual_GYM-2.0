@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIT-ZONE | Payment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .payment-container {
+      background: #111;
+      padding: 30px;
+      border-radius: 20px;
+      width: 380px;
+      box-shadow: 0 0 20px rgba(0, 255, 179, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00ffb3;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #ccc;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      background: #1a1a1a;
+      color: #fff;
+      margin-top: 5px;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: #00ffb3;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      background: #00ffb3;
+      color: #000;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #00cc8a;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      color: #00ffb3;
+      font-size: 18px;
+      margin-top: 15px;
+    }
+
+    /* Back button styling */
+    .back-btn {
+      margin-top: 30px;
+      background: none;
+      border: 2px solid #00ffb3;
+      color: #00ffb3;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #00ffb3;
+      color: #000;
+      box-shadow: 0 0 10px #00ffb3;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      body {
+        height: auto;
+        padding: 20px 0;
+      }
+      
+      .payment-container {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
+      }
+      
+      h2 {
+        font-size: 1.5em;
+      }
+      
+      .btn {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .payment-container {
+        width: 95%;
+        padding: 15px;
+      }
+      
+      h2 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+      }
+      
+      label {
+        font-size: 0.9em;
+        margin-top: 10px;
+      }
+      
+      input {
+        padding: 8px 10px;
+        font-size: 14px;
+      }
+      
+      .btn {
+        margin-top: 15px;
+        padding: 9px;
+      }
+      
+      .back-btn {
+        margin-top: 15px;
+        padding: 8px 15px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <h2>Payment Details</h2>
+    <form id="paymentForm">
+      <label>Cardholder Name</label>
+      <input type="text" placeholder="Your Name" required />
+
+      <label>Card Number</label>
+      <input type="text" maxlength="16" placeholder="1234 5678 9012 3456" required />
+
+      <div style="display: flex; gap: 10px;">
+        <div style="flex: 1;">
+          <label>Expiry</label>
+          <input type="text" maxlength="5" placeholder="MM/YY" required />
+        </div>
+        <div style="flex: 1;">
+          <label>CVV</label>
+          <input type="password" maxlength="3" placeholder="*" required />
+        </div>
+      </div>
+
+      <label>Amount</label>
+      <input type="number" placeholder="Enter amount" required />
+
+      <button type="submit" class="btn">Pay Now</button>
+      <p class="success" id="successMsg">✅ Payment Successful!</p>
+    </form>
+  </div>
+
+  <!-- Back to Home Button -->-
+  <a href="index.html" class="back-btn">← Back to Home</a>
+
+  <script>
+    const form = document.getElementById("paymentForm");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      successMsg.style.display = "block";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
